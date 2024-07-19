@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import ProductList from '@/components/ProductList.vue'
+import ProductAdd from '@/components/ProductAdd.vue'
 
 const produtos = ref([
   { id: 1, nome: 'Produto 1', preco: 'R$ 20,50' },
@@ -8,6 +9,7 @@ const produtos = ref([
   { id: 3, nome: 'Produto 3', preco: 'R$ 220,50' },
   { id: 4, nome: 'Produto 4', preco: 'R$ 320,50' },
 ])
+const proxId = ref(5)
 
 function excluir(id) {
   const index = produtos.value.findIndex(produto => produto.id === id)
@@ -17,6 +19,12 @@ function excluir(id) {
 function excluirTodos() {
   produtos.value = []
 }
+
+function adicionarProduto(produto) {
+  produto.id = proxId
+  produtos.value.push(produto)
+  proxId.value++
+}
 </script>
 
 <template>
@@ -24,4 +32,6 @@ function excluirTodos() {
   <product-list :produtos="produtos" @excluir="excluir" @apagarTudo="excluirTodos" />
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

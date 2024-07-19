@@ -14,8 +14,10 @@ defineProps(['produtos'])
 
         <body>
             <tr v-for="produto in produtos" :key="produto.id">
+
                 <td>{{ produto.nome }}</td>
                 <td>{{ produto.preco }} </td>
+
                 <td><i class="mdi mdi-delete" @click="$emit('excluir', produto.id)" /></td>
             </tr>
         </body>
@@ -24,7 +26,27 @@ defineProps(['produtos'])
 </template>
 
 <style scoped>
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+th {
+    background-color: lightgray;
+}
+
+tr {
+    text-align: center;
+}
+
 tr i {
     cursor: pointer;
+    font-size: larger;
 }
 </style>
